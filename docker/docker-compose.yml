@@ -3,7 +3,7 @@ version: '3.8'
 name: picpay
 services:
   mysql:
-    image: mysql:latest
+    image: mysql
     container_name: mysql-container
     ports:
       - '3306:3306'
@@ -16,7 +16,7 @@ services:
       - db_data:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin
     container_name: phpmyadmin-container
     ports:
       - "8081:80"
