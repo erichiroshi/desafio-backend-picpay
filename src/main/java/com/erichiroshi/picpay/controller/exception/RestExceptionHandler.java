@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.erichiroshi.picpay.service.exception.NotificationException;
 import com.erichiroshi.picpay.service.exception.PicPayException;
 
 @RestControllerAdvice
@@ -37,4 +38,8 @@ public class RestExceptionHandler {
     private record InvalidParam(String name, String reason) {
     }
 
+    @ExceptionHandler(NotificationException.class)
+    public ProblemDetail handleNotificationException(NotificationException e) {
+        return e.toProblemDetail();
+    }
 }
